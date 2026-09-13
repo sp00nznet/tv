@@ -1,0 +1,17 @@
+================================================================================
+PE CATALOG: tv/original/TVINST  (2 binaries)
+================================================================================
+
+================================================================================
+  DOS/OTHER
+================================================================================
+
+  [GAME.EXE]  624,695 bytes
+  SHA1: 69f51c805d2c80ae1d1fdc4c7a6b08dda879fa38
+  MZ -- real-mode DOS executable
+  read with: tools/disasm/decode16.py
+
+  [TV.EXE]  29,238 bytes
+  SHA1: 271bba3c9e487f98c5e8f368ecd3beb13b1ecb0d
+  MZ -- real-mode DOS executable
+  read with: tools/disasm/decode16.py
