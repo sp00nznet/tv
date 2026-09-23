@@ -8,6 +8,8 @@ Built on the [pcrecomp](https://github.com/sp00nznet/pcrecomp) toolchain.
 ## Project Status: **P0 complete. P1 blocked on a front end that does not exist yet.**
 
 This is the honest status and it is the reason the project is interesting.
+Nothing has been lifted, and nothing builds or runs. What is here is the P0
+write-up and `analysis/catalog.txt`.
 
 ---
 
@@ -19,7 +21,7 @@ TV.EXE      29,238 bytes   MZ launcher, Watcom
 ```
 
 `GAME.EXE` is a **Linear Executable (LE)** wrapped in a DOS/4GW extender stub.
-The toolchain has three front ends — PE32, NE16 and flat MZ — and this is none
+The toolchain reads PE32, PE32+ (x86-64), NE16 and flat MZ, and this is none
 of them. `pe/catalog.py` correctly names LE/LX images rather than reporting
 them as broken, and then routes them nowhere, because there is nowhere to route
 them to.
@@ -73,10 +75,11 @@ test of whether the lifter is compiler-independent.
 
 ## Where it goes next
 
-1. `disasm/le_parse.py` — object table, page table, fixup records. Model it on
-   `ne/ne_parse.py`, which solved the same shape of problem for 16-bit
+1. `tools/le/le_parse.py` — object table, page table, fixup records. Model it
+   on `tools/ne/ne_parse.py`, which solved the same shape of problem for 16-bit
    segmented images.
-2. Point `disasm32.py` at the resulting flat image.
+2. Point `tools/disasm/disasm32.py` at the resulting flat image, and lift it
+   with the same `lift32.py` the PE targets use.
 3. Decide how much of `runtime/recomp16/` the DPMI layer can reuse.
 
 Before any of that: Terminal Velocity's own shareware episode is freely
@@ -99,3 +102,7 @@ tv/
 
 Terminal Velocity © 1995 Terminal Reality / 3D Realms. This project neither
 contains nor distributes any part of it.
+
+The code and documentation here are MIT; [LICENSE](LICENSE) spells out that
+the grant stops at our own work and does not reach the game or anything
+lifted from it.
